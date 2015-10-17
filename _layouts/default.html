@@ -16,8 +16,8 @@
 
     <title>{{ site.title }}</title>
 
-    <link rel="stylesheet" href="/lib/semantic/css/semantic.no-resp.min.css"/>
-    <link rel="stylesheet" href="/css/base.css"/>
+    <link rel="stylesheet" href="{{ site.uri }}/lib/semantic/css/semantic.no-resp.min.css"/>
+    <link rel="stylesheet" href="{{ site.uri }}/css/base.css"/>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,700"/>
 </head>
 
@@ -34,22 +34,19 @@
     <div class="ui divider"></div>
 
     <div class="footer ui basic segment">
-        Made with tea
-        <i class="leaf circular small icon"></i>
+        A friendly fork of
+        <a href="http://joshldavis.com">Josh Davis's</a>
+        <a href="https://twofactorauth.org">Two Factor Auth</a>
         by
-        <a href="http://joshldavis.com">Josh Davis</a>
-        and love
-        <i class="heart circular small icon"></i>
-        from some awesome
-        <a href="{{ site.repo }}/graphs/contributors">Contributors</a>.
+        <a href="https://www.nitrokey.com">Nitrokey</a>.
     </div>
 
     <!-- 3rd Party Libraries -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="/lib/semantic/javascript/semantic.min.js"></script>
-    <script src="/js/jquery.unveil.min.js"></script>
+    <script src="{{ site.uri }}/lib/semantic/javascript/semantic.min.js"></script>
+    <script src="{{ site.uri }}/js/jquery.unveil.min.js"></script>
 
     <!-- TFA JS -->
-    <script src="/js/app.js"></script>
+    <script src="{{ site.uri }}/js/app.js"></script>
 </body>
 </html>

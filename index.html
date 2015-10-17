@@ -16,14 +16,14 @@ hash: SupportDongleAuth
         <div class="column">
 
             <div class="banner ui icon header">
-                <i class="circular mobile icon"></i>
-                <h2>USB Dongle Authentication</h2>
+                <img src="{{ site.uri }}/img/usb_stick.png" class="icon" alt="{{ website.name }}">
+                <h2>USB-Dongle Authentication</h2>
                 <div class="sub header">List of websites and whether or not they support
                     <a href="https://en.wikipedia.org/wiki/Initiative_For_Open_Authentication">One Time Passwords (OTP)</a> or
                     <a href="https://en.wikipedia.org/wiki/Universal_2nd_Factor">Universal 2nd Factor (U2F)</a>.
                 </div>
                 <div class="sub header">
-                    Also see the list of <a href="/providers/">USB dongles</a> and the standard they support.
+                    Also see the list of <a href="{{ site.uri }}/providers/">dongles</a> and the protocol they support.
                 </div>
                 <div id="{{ first.id }}" class="sub header">
                     Add your own favorite site by submitting a pull request on the
@@ -31,18 +31,22 @@ hash: SupportDongleAuth
                 </div>
             </div>
 
-        {% for section in site.data.main.sections %}
+        {% for section in site.data.devices.main.sections %}
             <div class="section">
                 <table class="ui table celled compact segment">
                     <thead>
                         <tr>
                             <th class="eleven wide"><h2>{{ section.title }}</h2></th>
                             <th>Docs</th>
+<!--
                             <th>SMS</th>
                             <th>Phone Call</th>
                             <th>Email</th>
                             <th>Hardware Token</th>
                             <th>Software Implementation</th>
+-->
+                            <th>One Time Passwords (OTP)</th>
+                            <th>Universal 2nd Factor (U2F)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,7 +56,7 @@ hash: SupportDongleAuth
     alphabetical order.
 {% endcomment %}
 
-{% assign section_file = site.data[section.id] %}
+{% assign section_file = site.data.devices[section.id] %}
 
 {% capture website_names %}
 {% for website in section_file.websites %}
@@ -73,8 +77,8 @@ hash: SupportDongleAuth
                                         {% if website.tfa %}
                                             <td class="main positive">
                                             {% if website.img %}
-                                                <img src="/img/placeholder.png" data-src="/img/{{ section.id }}/{{ website.img }}" class="icon" alt="{{ website.name }}">
-                                                <noscript><img src="/img/{{ section.id }}/{{ website.img }}" class="icon" alt="{{ website.name }}"></noscript>
+                                                <img src="{{ site.uri }}/img/placeholder.png" data-src="{{ site.uri }}/img/{{ section.id }}/{{ website.img }}" class="icon" alt="{{ website.name }}">
+                                                <noscript><img src="{{ site.uri }}/img/{{ section.id }}/{{ website.img }}" class="icon" alt="{{ website.name }}"></noscript>
                                             {% endif %}
                                                 <a href="{{ website.url }}">{{ website.name }}</a>
                                                 {% include exception.html website=website %}
@@ -85,7 +89,7 @@ hash: SupportDongleAuth
                                                 <a href="{{ website.doc }}"><i class="external url link large icon"></i></a>
                                             {% endif %}
                                             </td>
-
+<!--
                                             <td class="positive icon">
                                             {% if website.sms %}
                                                 <i class="checkmark large icon"></i>
@@ -115,12 +119,25 @@ hash: SupportDongleAuth
                                                 <i class="checkmark large icon"></i>
                                             {% endif %}
                                             </td>
+-->
+                                            <td class="positive icon">
+                                            {% if website.otp %}
+                                                <i class="checkmark large icon"></i>
+                                            {% endif %}
+                                            </td>
+
+                                            <td class="positive icon">
+                                            {% if website.u2f %}
+                                                <i class="checkmark large icon"></i>
+                                            {% endif %}
+                                            </td>
+
                                         </tr>
                                         {% else %}
                                             <td class="main negative">
                                             {% if website.img %}
-                                                <img src="/img/placeholder.png" data-src="/img/{{ section.id }}/{{ website.img }}" class="icon" alt="{{ website.name }}">
-                                                <noscript><img src="/img/{{ section.id }}/{{ website.img }}" class="icon" alt="{{ website.name }}"></noscript>
+                                                <img src="{{ site.uri }}/img/placeholder.png" data-src="{{ site.uri }}/img/{{ section.id }}/{{ website.img }}" class="icon" alt="{{ website.name }}">
+                                                <noscript><img src="{{ site.uri }}/img/{{ section.id }}/{{ website.img }}" class="icon" alt="{{ website.name }}"></noscript>
                                             {% endif %}
                                                 <a href="{{ website.url }}">{{ website.name }}</a>
                                             {% if website.status %}
@@ -155,7 +172,7 @@ hash: SupportDongleAuth
                 </table>
 
             {% unless forloop.last %}
-                <div class="ui divider" id="{{ site.data.main.sections[forloop.index].id }}" ></div>
+                <div class="ui divider" id="{{ site.data.devices.main.sections[forloop.index].id }}" ></div>
             {% endunless %}
             </div><!-- Section -->
         {% endfor %}

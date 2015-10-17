@@ -1,7 +1,7 @@
 websites:
     - name: Amazon
       url: https://amazon.com
-      twitter: AmazonHelp
+      twitter: Amazon
       img: amazon.png
       tfa: No
 
@@ -9,8 +9,7 @@ websites:
       url: https://appleid.apple.com
       img: apple.png
       tfa: Yes
-      sms: Yes
-      software: Yes
+      otp: Yes
       exceptions:
           text: "SMS only available on select providers."
       doc: http://support.apple.com/kb/ht5570
@@ -25,8 +24,8 @@ websites:
       url: http://ebay.com
       img: ebay.png
       tfa: Yes
-      hardware: Yes
-      software: Yes
+      u2f: No
+      otp: Yes
       exceptions:
           text: "While PayPal supports hardware and software 2FA in all locales, eBay only supports 2FA in some locales."
       doc: https://www.paypal.com/cgi-bin/webscr?cmd=xpt/Marketing_CommandDriven/securitycenter/PayPalSecurityKey-outside
@@ -34,7 +33,6 @@ websites:
     - name: Etsy
       url: http://www.etsy.com/
       img: etsy.png
-      sms: Yes
       tfa: Yes
       doc: http://www.etsy.com/help/article/3335
 
